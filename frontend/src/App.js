@@ -443,21 +443,21 @@ function App() {
             <div className="mb-8 md:mb-0">
               <h3 className="text-lg font-semibold mb-4">Links Rápidos</h3>
               <ul className="space-y-2">
-                <li><a href="#home" className="text-gray-400 hover:text-white transition">Início</a></li>
-                <li><a href="#about" className="text-gray-400 hover:text-white transition">Quem Somos</a></li>
-                <li><a href="#services" className="text-gray-400 hover:text-white transition">Serviços</a></li>
-                <li><a href="#success-cases" className="text-gray-400 hover:text-white transition">Casos de Sucesso</a></li>
-                <li><a href="#contact" className="text-gray-400 hover:text-white transition">Contato</a></li>
+                <li><a href="#home" onClick={(e) => { e.preventDefault(); scrollToSection('home'); }} className="text-gray-400 hover:text-white transition">Início</a></li>
+                <li><a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }} className="text-gray-400 hover:text-white transition">Quem Somos</a></li>
+                <li><a href="#services" onClick={(e) => { e.preventDefault(); scrollToSection('services'); }} className="text-gray-400 hover:text-white transition">Serviços</a></li>
+                <li><a href="#success-cases" onClick={(e) => { e.preventDefault(); scrollToSection('success-cases'); }} className="text-gray-400 hover:text-white transition">Casos de Sucesso</a></li>
+                <li><a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }} className="text-gray-400 hover:text-white transition">Contato</a></li>
               </ul>
             </div>
             
             <div className="mb-8 md:mb-0">
               <h3 className="text-lg font-semibold mb-4">Serviços</h3>
               <ul className="space-y-2">
-                <li><a href="#services" className="text-gray-400 hover:text-white transition">Chatbots Inteligentes</a></li>
-                <li><a href="#services" className="text-gray-400 hover:text-white transition">Agentes de IA</a></li>
-                <li><a href="#services" className="text-gray-400 hover:text-white transition">Automações em IA</a></li>
-                <li><a href="#services" className="text-gray-400 hover:text-white transition">Análises e Insights</a></li>
+                <li><a href="#services" onClick={(e) => { e.preventDefault(); scrollToSection('services'); }} className="text-gray-400 hover:text-white transition">Chatbots Inteligentes</a></li>
+                <li><a href="#services" onClick={(e) => { e.preventDefault(); scrollToSection('services'); }} className="text-gray-400 hover:text-white transition">Agentes de IA</a></li>
+                <li><a href="#services" onClick={(e) => { e.preventDefault(); scrollToSection('services'); }} className="text-gray-400 hover:text-white transition">Automações em IA</a></li>
+                <li><a href="#services" onClick={(e) => { e.preventDefault(); scrollToSection('services'); }} className="text-gray-400 hover:text-white transition">Análises e Insights</a></li>
               </ul>
             </div>
           </div>
