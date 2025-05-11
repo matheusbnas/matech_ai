@@ -1,29 +1,3 @@
-#!/bin/bash
-
-# Script to export the complete Matech.AI website for deployment
-
-echo "Starting export process for Matech.AI website..."
-
-# Create export directory
-export_dir="/app/export"
-mkdir -p "$export_dir/frontend"
-mkdir -p "$export_dir/backend"
-
-# Export frontend
-echo "Building frontend..."
-cd /app/frontend
-yarn build
-
-# Copy built frontend files
-echo "Copying frontend files..."
-cp -r /app/frontend/build/* "$export_dir/frontend/"
-
-# Copy backend files
-echo "Copying backend files..."
-cp -r /app/backend/* "$export_dir/backend/"
-
-# Create a readme file with deployment instructions
-cat > "$export_dir/README.md" << 'EOF'
 # Matech.AI Website Deployment
 
 Este repositório contém o código completo do site da Matech.AI, pronto para implantação.
@@ -150,12 +124,3 @@ Recomenda-se configurar HTTPS usando Let's Encrypt:
 sudo apt install certbot python3-certbot-nginx
 sudo certbot --nginx -d seudomain.com -d www.seudomain.com
 ```
-EOF
-
-# Create a zip file of the export directory
-echo "Creating zip archive..."
-cd /app
-zip -r export.zip export
-
-echo "Export complete! Files are available in /app/export and /app/export.zip"
-echo "You can download the entire website from /app/export.zip"
