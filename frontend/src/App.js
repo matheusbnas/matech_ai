@@ -412,6 +412,13 @@ function App() {
                     message: formData.get('message')
                   };
                   
+                  // Show loading status
+                  setFormStatus({
+                    show: true,
+                    success: null, // loading state
+                    message: 'Enviando mensagem...'
+                  });
+                  
                   // Send the form data to the backend
                   fetch('/api/contact', {
                     method: 'POST',
@@ -423,15 +430,27 @@ function App() {
                   .then(response => response.json())
                   .then(data => {
                     if (data.success) {
-                      alert("Mensagem enviada com sucesso! Entraremos em contato em breve.");
+                      setFormStatus({
+                        show: true,
+                        success: true,
+                        message: "Mensagem enviada com sucesso! Entraremos em contato em breve."
+                      });
                       e.target.reset();
                     } else {
-                      alert("Erro ao enviar mensagem. Por favor, tente novamente.");
+                      setFormStatus({
+                        show: true,
+                        success: false,
+                        message: "Erro ao enviar mensagem. Por favor, tente novamente."
+                      });
                     }
                   })
                   .catch(error => {
                     console.error('Error:', error);
-                    alert("Erro ao enviar mensagem. Por favor, tente novamente.");
+                    setFormStatus({
+                      show: true,
+                      success: false,
+                      message: "Erro ao enviar mensagem. Por favor, tente novamente."
+                    });
                   });
                 }}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
