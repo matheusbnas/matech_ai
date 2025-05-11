@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
@@ -6,6 +6,27 @@ function App() {
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  // Smooth scrolling function
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      // Close mobile menu if open
+      setMobileMenuOpen(false);
+      
+      // Get the header height to offset the scroll position
+      const headerHeight = document.querySelector('header').offsetHeight;
+      
+      // Calculate the position to scroll to
+      const offsetPosition = element.offsetTop - headerHeight;
+      
+      // Scroll to the calculated position
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
   };
 
   return (
@@ -17,11 +38,11 @@ function App() {
             <h1 className="text-2xl font-bold text-blue-700">Matech.AI</h1>
           </div>
           <nav className="hidden md:flex space-x-6">
-            <a href="#home" className="text-gray-700 hover:text-blue-600 transition">Início</a>
-            <a href="#about" className="text-gray-700 hover:text-blue-600 transition">Quem Somos</a>
-            <a href="#services" className="text-gray-700 hover:text-blue-600 transition">Serviços</a>
-            <a href="#success-cases" className="text-gray-700 hover:text-blue-600 transition">Casos de Sucesso</a>
-            <a href="#contact" className="text-gray-700 hover:text-blue-600 transition">Contato</a>
+            <a href="#home" onClick={(e) => { e.preventDefault(); scrollToSection('home'); }} className="text-gray-700 hover:text-blue-600 transition">Início</a>
+            <a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }} className="text-gray-700 hover:text-blue-600 transition">Quem Somos</a>
+            <a href="#services" onClick={(e) => { e.preventDefault(); scrollToSection('services'); }} className="text-gray-700 hover:text-blue-600 transition">Serviços</a>
+            <a href="#success-cases" onClick={(e) => { e.preventDefault(); scrollToSection('success-cases'); }} className="text-gray-700 hover:text-blue-600 transition">Casos de Sucesso</a>
+            <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }} className="text-gray-700 hover:text-blue-600 transition">Contato</a>
           </nav>
           <div className="md:hidden">
             <button className="p-2 text-gray-700" onClick={toggleMobileMenu}>
@@ -36,11 +57,11 @@ function App() {
         {mobileMenuOpen && (
           <div className="md:hidden bg-white py-2 px-4 shadow-lg mobile-menu">
             <nav className="flex flex-col space-y-4 py-2">
-              <a href="#home" className="text-gray-700 hover:text-blue-600 transition" onClick={() => setMobileMenuOpen(false)}>Início</a>
-              <a href="#about" className="text-gray-700 hover:text-blue-600 transition" onClick={() => setMobileMenuOpen(false)}>Quem Somos</a>
-              <a href="#services" className="text-gray-700 hover:text-blue-600 transition" onClick={() => setMobileMenuOpen(false)}>Serviços</a>
-              <a href="#success-cases" className="text-gray-700 hover:text-blue-600 transition" onClick={() => setMobileMenuOpen(false)}>Casos de Sucesso</a>
-              <a href="#contact" className="text-gray-700 hover:text-blue-600 transition" onClick={() => setMobileMenuOpen(false)}>Contato</a>
+              <a href="#home" onClick={(e) => { e.preventDefault(); scrollToSection('home'); }} className="text-gray-700 hover:text-blue-600 transition">Início</a>
+              <a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }} className="text-gray-700 hover:text-blue-600 transition">Quem Somos</a>
+              <a href="#services" onClick={(e) => { e.preventDefault(); scrollToSection('services'); }} className="text-gray-700 hover:text-blue-600 transition">Serviços</a>
+              <a href="#success-cases" onClick={(e) => { e.preventDefault(); scrollToSection('success-cases'); }} className="text-gray-700 hover:text-blue-600 transition">Casos de Sucesso</a>
+              <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }} className="text-gray-700 hover:text-blue-600 transition">Contato</a>
             </nav>
           </div>
         )}
