@@ -76,10 +76,10 @@ function App() {
               Somos especialistas em soluções de Inteligência Artificial que impulsionam a transformação digital da sua empresa.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="#contact" className="bg-white text-blue-900 font-semibold px-6 py-3 rounded-lg hover:bg-blue-100 transition text-center">
+              <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }} className="bg-white text-blue-900 font-semibold px-6 py-3 rounded-lg hover:bg-blue-100 transition text-center">
                 Fale Conosco
               </a>
-              <a href="#services" className="border border-white text-white font-semibold px-6 py-3 rounded-lg hover:bg-white hover:text-blue-900 transition text-center">
+              <a href="#services" onClick={(e) => { e.preventDefault(); scrollToSection('services'); }} className="border border-white text-white font-semibold px-6 py-3 rounded-lg hover:bg-white hover:text-blue-900 transition text-center">
                 Nossos Serviços
               </a>
             </div>
